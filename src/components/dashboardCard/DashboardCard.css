@@ -1,0 +1,76 @@
+.dashboard-card {
+  background-color: #722f37; /* Color vino */
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: white;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.storage-indicator {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.card-image {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cafeteria-name {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.storage-status {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.view-storage-btn {
+  background-color: white;
+  color: #722f37;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: auto;
+}
+
+.view-storage-btn:hover {
+  background-color: #1e3a5f; /* Azul oscuro */
+  color: white;
+}
