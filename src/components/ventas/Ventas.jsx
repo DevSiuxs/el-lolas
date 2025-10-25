@@ -1,47 +1,48 @@
 import React from 'react';
-import DashboardCard from '../dashboardCard/DashboardCard'; // Usamos el componente de tu compañero
+import DashboardCard from '../dashboardCard/DashboardCard';
 import './ventas.css';
 
+// Importar las imágenes directamente
+import bebidasCalientes from '../../assets/lolas.jpeg';
+import bebidasFrias from '../../assets/lolas.jpeg'; // Usa la misma temporalmente
+import refrescos from '../../assets/lolas.jpeg'; // Usa la misma temporalmente
+import snacks from '../../assets/lolas.jpeg'; // Usa la misma temporalmente
+
 const Ventas = () => {
-  // Datos de las 4 categorías de ventas
+  // Datos de las 4 categorías de ventas con imports directos
   const categoriasVentas = [
     {
       id: 1,
       nombre: 'Bebidas Calientes',
-      estado: 'green', // green, orange, red
-      imagen: '/assets/bebidas-calientes.jpg',
+      estado: 'green',
+      imagen: bebidasCalientes, // ← Usa la variable importada
       descripcion: 'Cafés, tés, chocolates'
     },
     {
       id: 2,
       nombre: 'Bebidas Frías',
       estado: 'green',
-      imagen: '/assets/bebidas-frias.jpg',
+      imagen: bebidasFrias, // ← Usa la variable importada
       descripcion: 'Smoothies, jugos, bebidas heladas'
     },
     {
       id: 3,
       nombre: 'Refrescos',
       estado: 'orange',
-      imagen: '/assets/refrescos.jpg',
+      imagen: refrescos, // ← Usa la variable importada
       descripcion: 'Refrescos y sodas'
     },
     {
       id: 4,
       nombre: 'Snacks',
       estado: 'green',
-      imagen: '/assets/snacks.jpg',
+      imagen: snacks, // ← Usa la variable importada
       descripcion: 'Botanas y alimentos ligeros'
     }
   ];
 
-  // Función para manejar el clic en cada categoría
   const manejarClicCategoria = (categoriaNombre) => {
     console.log(`Navegando a productos de: ${categoriaNombre}`);
-    // Aquí puedes:
-    // 1. Navegar a otra pantalla
-    // 2. Mostrar productos de esa categoría
-    // 3. Filtrar productos, etc.
     alert(`Ver productos de: ${categoriaNombre}`);
   };
 
@@ -54,13 +55,17 @@ const Ventas = () => {
 
       <div className="categorias-grid">
         {categoriasVentas.map(categoria => (
-          <DashboardCard
-            key={categoria.id}
-            cafeteria={categoria.nombre}
-            storageLevel={categoria.estado}
-            image={categoria.imagen}
-            // Podemos "hackear" las props para adaptarlas a ventas
-          />
+          <div 
+            key={categoria.id} 
+            onClick={() => manejarClicCategoria(categoria.nombre)}
+            className="categoria-item"
+          >
+            <DashboardCard
+              cafeteria={categoria.nombre}
+              storageLevel={categoria.estado}
+              image={categoria.imagen} // ← Pasa la imagen importada
+            />
+          </div>
         ))}
       </div>
     </div>
