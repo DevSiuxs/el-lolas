@@ -28,6 +28,13 @@ const DashboardCard = ({ cafeteria, storageLevel, image }) => {
     }
   };
 
+  
+  const handleImageError = (e) => {
+    console.log('Error cargando imagen:', image);
+    e.target.src = '/assets/lolas.jpeg'; 
+    // e.target.alt = 'Imagen no disponible';
+  };
+
   return (
     <div className="dashboard-card">
       <div 
@@ -37,7 +44,11 @@ const DashboardCard = ({ cafeteria, storageLevel, image }) => {
       ></div>
       
       <div className="card-image">
-        <img src={image || './assets/lolas.jpeg'} alt={cafeteria} />
+        <img 
+          src={image} 
+          alt={cafeteria}
+          onError={handleImageError}
+        />
       </div>
       
       <div className="card-content">
@@ -48,7 +59,7 @@ const DashboardCard = ({ cafeteria, storageLevel, image }) => {
       </div>
       
       <button className="view-storage-btn">
-        Ver Almacén
+        Redirigir a Almacén
       </button>
     </div>
   );
