@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Sidebar.css';
 
 const Sidebar = ({ isOpen, closeSidebar, onNavigate }) => { // ← Agrega onNavigate aquí
   const menuItems = [
+<<<<<<< HEAD
     'Dashboard',
     'Ventas',
     'Inventario',
@@ -11,6 +13,15 @@ const Sidebar = ({ isOpen, closeSidebar, onNavigate }) => { // ← Agrega onNavi
     'Configuración',
     'Ayuda',
     'Cerrar Sesión'
+=======
+    { name: 'Dashboard', path: '/dashboard' },
+    { name: 'Ventas', path: '/ventas' },
+    { name: 'Inventario', path: '/inventario' },
+    { name: 'Reportes', path: '/reportes' },
+    { name: 'Configuración', path: '/configuracion' },
+    { name: 'Ayuda', path: '/ayuda' },
+    { name: 'Cerrar Sesión', path: '/logout' }
+>>>>>>> 032b18bebee61f6fb5ae366c3f39d2bddb3590cb
   ];
 
   const handleMenuItemClick = (item) => {
@@ -29,7 +40,7 @@ const Sidebar = ({ isOpen, closeSidebar, onNavigate }) => { // ← Agrega onNavi
       <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <div className="sidebar-logo">
-            <span>Ventas System</span>
+            <span>Menu</span>
           </div>
           <button className="close-btn" onClick={closeSidebar}>×</button>
         </div>
@@ -37,6 +48,7 @@ const Sidebar = ({ isOpen, closeSidebar, onNavigate }) => { // ← Agrega onNavi
           <ul>
             {menuItems.map((item, index) => (
               <li key={index}>
+<<<<<<< HEAD
                 <a 
                   href="#" 
                   onClick={(e) => {
@@ -46,6 +58,15 @@ const Sidebar = ({ isOpen, closeSidebar, onNavigate }) => { // ← Agrega onNavi
                 >
                   {item}
                 </a>
+=======
+                <Link 
+                  to={item.path} 
+                  onClick={closeSidebar}
+                  className="sidebar-link"
+                >
+                  {item.name}
+                </Link>
+>>>>>>> 032b18bebee61f6fb5ae366c3f39d2bddb3590cb
               </li>
             ))}
           </ul>
