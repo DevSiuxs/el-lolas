@@ -15,11 +15,11 @@ const Sidebar = ({ isOpen, closeSidebar, onNavigate }) => { // ← Agrega onNavi
 
   const handleMenuItemClick = (item) => {
     if (item === 'Logeo de Usuario') {
-      onNavigate('logeo'); // ← Llama a onNavigate con 'logeo'
+      onNavigate('logeo'); 
     } else if (item === 'Dashboard') {
       onNavigate('dashboard'); // ← Para volver al dashboard
     }
-    // Para otros items podrías agregar más casos
+    
     closeSidebar();
   };
 

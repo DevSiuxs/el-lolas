@@ -1,7 +1,7 @@
 import React from 'react';
 import './DashboardCard.css';
 
-const DashboardCard = ({ cafeteria, storageLevel, image }) => {
+const DashboardCard = ({ cafeteria, storageLevel, image, onVerAlmacen }) => {
   const getStatusColor = () => {
     switch (storageLevel) {
       case 'green':
@@ -28,11 +28,10 @@ const DashboardCard = ({ cafeteria, storageLevel, image }) => {
     }
   };
 
-  
   const handleImageError = (e) => {
     console.log('Error cargando imagen:', image);
-    e.target.src = '/assets/lolas.jpeg'; 
-    // e.target.alt = 'Imagen no disponible';
+    e.target.src = 'https://via.placeholder.com/60x60/722f37/FFFFFF?text=CAFE';
+    e.target.alt = 'Imagen no disponible';
   };
 
   return (
@@ -58,7 +57,7 @@ const DashboardCard = ({ cafeteria, storageLevel, image }) => {
         </p>
       </div>
       
-      <button className="view-storage-btn">
+      <button className="view-storage-btn" onClick={onVerAlmacen}>
         Redirigir a Almacén
       </button>
     </div>
