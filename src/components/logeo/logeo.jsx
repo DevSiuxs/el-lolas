@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import './logeo.css';
 
+// Formulario de registro de usuario
+// - Maneja estado del formulario y validaciones básicas
+// - Muestra errores por campo y resetea al enviar correctamente
 const Logeo = () => {
+  // Estado del formulario
   const [formData, setFormData] = useState({
     nombre: '',
     correo: '',
@@ -10,8 +14,10 @@ const Logeo = () => {
     rol: 'usuario'
   });
 
+  // Errores por campo
   const [errors, setErrors] = useState({});
 
+  // Actualiza estado al escribir en inputs/select
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -20,6 +26,7 @@ const Logeo = () => {
     }));
   };
 
+  // Validaciones básicas de cada campo
   const validateForm = () => {
     const newErrors = {};
 
@@ -49,6 +56,7 @@ const Logeo = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Envío del formulario (mock) con reseteo
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
@@ -69,11 +77,13 @@ const Logeo = () => {
   return (
     <div className="logeo-container">
       <div className="logeo-card">
+        {/* Encabezado de la tarjeta */}
         <div className="logeo-header">
           <h2>Registro de Usuario</h2>
           <p>Crear nueva cuenta de usuario</p>
         </div>
 
+        {/* Formulario principal */}
         <form onSubmit={handleSubmit} className="logeo-form">
           <div className="form-group">
             <label htmlFor="nombre">Nombre Completo</label>
@@ -148,11 +158,13 @@ const Logeo = () => {
             </select>
           </div>
 
+          {/* Acción: enviar formulario */}
           <button type="submit" className="submit-btn">
             Registrar Usuario
           </button>
         </form>
 
+        {/* Pie con enlace alternativo */}
         <div className="logeo-footer">
           <p>¿Ya tienes una cuenta? <a href="#login">Iniciar Sesión</a></p>
         </div>

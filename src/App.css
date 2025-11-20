@@ -1,21 +1,25 @@
+/* Reset básico de caja y márgenes */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Contenedor principal de la aplicación */
 .App {
   min-height: 100vh;
   background-color: #fefefe; /* Blanco hueso */
   font-family: 'Arial', sans-serif;
 }
 
+/* Área de contenido principal */
 .main-content {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Título del dashboard */
 .dashboard-title {
   color: #722f37; /* Color vino */
   margin-bottom: 2rem;
@@ -23,12 +27,14 @@
   font-size: 2rem;
 }
 
+/* Grid de tarjetas del dashboard */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .cards-grid {
     grid-template-columns: 1fr;

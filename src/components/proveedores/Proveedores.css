@@ -1,0 +1,182 @@
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(30,58,95,0.0); transform: scale(1); }
+  50% { box-shadow: 0 0 0 8px rgba(30,58,95,0.12); transform: scale(1.03); }
+  100% { box-shadow: 0 0 0 0 rgba(30,58,95,0.0); transform: scale(1); }
+}
+
+.proveedores-page {
+  padding: 1rem;
+}
+
+/* Encabezado y acciones principales */
+.proveedores-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.proveedores-header h1 {
+  margin: 0;
+  color: #1e3a5f;
+}
+
+.acciones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-buscar {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  min-width: 280px;
+}
+
+.btn-primario {
+  background: #722f37;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tabla-wrapper {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Tabla de proveedores */
+.tabla-proveedores {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-proveedores thead th {
+  position: sticky;
+  top: 0;
+  background: #722f37;
+  color: white;
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+}
+
+.tabla-proveedores tbody td {
+  padding: 0.6rem 0.8rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.cell-strong {
+  font-weight: 600;
+  color: #1e3a5f;
+}
+
+.acciones-cell {
+  white-space: nowrap;
+}
+
+.btn-accion {
+  background: none;
+  border: 1px solid #e0e0e0;
+  color: #1e3a5f;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 0.4rem;
+}
+
+.btn-peligro {
+  background: #F44336;
+  color: white;
+  border: none;
+  padding: 0.45rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-guardar {
+  background: #1e3a5f;
+  color: white;
+  border: none;
+  padding: 0.45rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 0.4rem;
+}
+
+.btn-cancelar {
+  background: none;
+  border: 1px solid #e0e0e0;
+  color: #1e3a5f;
+  padding: 0.45rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Modales de proveedor (nuevo y editar) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 680px;
+  padding: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: #1e3a5f;
+  font-weight: 600;
+}
+
+.form-grid input {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.form-grid .full {
+  grid-column: 1 / -1;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.empty {
+  text-align: center;
+  color: #777;
+  padding: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .acciones { flex-direction: column; }
+  .input-buscar { min-width: 0; width: 100%; }
+  .form-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,73 @@
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(30,58,95,0.0); transform: scale(1); }
+  50% { box-shadow: 0 0 0 8px rgba(30,58,95,0.12); transform: scale(1.03); }
+  100% { box-shadow: 0 0 0 0 rgba(30,58,95,0.0); transform: scale(1); }
+}
+
+.productos-container { padding: 1rem; }
+.productos-title { margin: 0; color: #1e3a5f; }
+
+.productos-overview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.75rem; }
+.productos-overview-card { background: white; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.75rem; }
+.productos-overview-indicator { width: 12px; height: 12px; border-radius: 50%; background: #722f37; }
+.productos-overview-info h3 { margin: 0; color: #1e3a5f; }
+
+/* Breadcrumb y encabezado de sucursal */
+.productos-header { display: flex; align-items: center; justify-content: space-between; }
+.productos-container .breadcrumb { display: inline-flex; align-items: center; gap: 0.3rem; }
+.productos-container .breadcrumb-back { background: none; border: 1px solid #e0e0e0; color: #1e3a5f; padding: 0.25rem 0.5rem; border-radius: 6px; cursor: pointer; }
+.productos-container .breadcrumb-link { background: none; border: none; color: #1e3a5f; cursor: pointer; font-weight: 600; }
+.productos-container .breadcrumb-sep { color: #999; }
+.productos-container .breadcrumb-current { color: #722f37; font-weight: 700; }
+
+/* Tarjetas de estadísticas (porcentaje activos, conteo) */
+.productos-container .estadisticas { display: flex; gap: 0.75rem; }
+.productos-container .estadistica-card { background: white; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); padding: 0.6rem 0.9rem; display: flex; flex-direction: column; align-items: center; }
+.productos-container .estadistica-card .numero { font-size: 1.3rem; font-weight: 700; color: #1e3a5f; }
+.productos-container .estadistica-card .label { color: #555; }
+
+/* Filtros y acciones superiores */
+.productos-container .filtros { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; align-items: center; margin: 0.75rem 0; }
+.productos-container .filtro-group { background: white; padding: 0.75rem 1rem; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 0.5rem; }
+.productos-container .orden-indicador { color: #722f37; font-weight: 600; }
+.productos-container .acciones-header { display: flex; gap: 0.5rem; }
+.btn-primario { background: #722f37; color: #fff; border: none; padding: 0.5rem 0.9rem; border-radius: 8px; cursor: pointer; font-weight: 600; }
+
+/* Tabla de productos */
+.productos-container .tabla-container { background: white; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); overflow: hidden; }
+.productos-table { width: 100%; border-collapse: collapse; }
+.productos-table thead th { position: sticky; top: 0; background: #722f37; color: white; text-align: left; padding: 0.6rem 0.8rem; }
+.productos-table tbody td { padding: 0.6rem 0.8rem; border-top: 1px solid #f0f0f0; }
+.producto-info strong { color: #1e3a5f; }
+
+/* Switch de activo/no activo */
+.productos-container .switch { position: relative; display: inline-block; width: 40px; height: 22px; }
+.productos-container .switch input { opacity: 0; width: 0; height: 0; }
+.productos-container .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .2s; border-radius: 22px; }
+.productos-container .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 2px; bottom: 2px; background-color: white; transition: .2s; border-radius: 50%; }
+.productos-container .switch input:checked + .slider { background-color: #4CAF50; }
+.productos-container .switch input:checked + .slider:before { transform: translateX(18px); }
+
+/* Controles de edición en fila */
+.productos-container .precio-edit input { width: 120px; padding: 0.35rem 0.5rem; border: 1px solid #e0e0e0; border-radius: 6px; }
+
+.productos-container .btn-accion { background: none; border: 1px solid #e0e0e0; color: #1e3a5f; padding: 0.4rem 0.7rem; border-radius: 8px; cursor: pointer; margin-right: 0.4rem; }
+.productos-container .btn-peligro { background: #F44336; color: white; border: none; padding: 0.45rem 0.8rem; border-radius: 8px; cursor: pointer; }
+.productos-container .btn-guardar { background: #1e3a5f; color: white; border: none; padding: 0.45rem 0.8rem; border-radius: 8px; cursor: pointer; margin-right: 0.4rem; }
+.productos-container .btn-cancelar { background: none; border: 1px solid #e0e0e0; color: #1e3a5f; padding: 0.45rem 0.8rem; border-radius: 8px; cursor: pointer; }
+.productos-container .acciones-cell { white-space: nowrap; }
+.productos-container .empty { text-align: center; color: #777; padding: 1rem; }
+
+/* Modales (nuevo producto, editar base, receta por sucursal) */
+.productos-container .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.35); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.productos-container .modal { background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); width: 90%; max-width: 680px; padding: 1rem; }
+.productos-container .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+.productos-container .form-grid label { display: flex; flex-direction: column; gap: 0.35rem; color: #1e3a5f; font-weight: 600; }
+.productos-container .form-grid input, .productos-container .form-grid textarea, .productos-container .form-grid select { padding: 0.5rem 0.75rem; border-radius: 8px; border: 1px solid #e0e0e0; }
+.productos-container .form-grid .full { grid-column: 1 / -1; }
+.productos-container .modal-actions { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.5rem; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .productos-container .form-grid { grid-template-columns: 1fr; }
+}

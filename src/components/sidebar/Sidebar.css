@@ -1,3 +1,4 @@
+/* Overlay del sidebar */
 .sidebar-overlay {
   position: fixed;
   top: 0;
@@ -16,6 +17,7 @@
   visibility: visible;
 }
 
+/* Drawer lateral del menú */
 .sidebar {
   position: fixed;
   top: 0;
@@ -33,6 +35,7 @@
   left: 0;
 }
 
+/* Encabezado del sidebar */
 .sidebar-header {
   display: flex;
   justify-content: space-between;
@@ -67,6 +70,7 @@
   background-color: #1e3a5f; /* Azul oscuro */
 }
 
+/* Lista y elementos del menú principal */
 .sidebar-nav ul {
   list-style: none;
   padding: 0;
@@ -77,20 +81,141 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.sidebar-nav a {
+.sidebar-nav .menu-btn {
   display: block;
+  width: 100%;
   padding: 1.5rem 2rem;
   color: white;
-  text-decoration: none;
+  background: none;
+  border: none;
+  text-align: left;
   transition: all 0.3s;
   font-size: 1.1rem;
+  cursor: pointer;
 }
 
-.sidebar-nav a:hover {
+.sidebar-nav .menu-btn-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-label {
+  pointer-events: none;
+}
+
+/* Indicador caret del menú con submenú */
+.menu-caret {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+  transition: transform 0.25s ease, color 0.25s ease, text-shadow 0.25s ease, opacity 0.25s ease, background-color 0.25s ease, padding 0.25s ease;
+  opacity: 0.85;
+}
+
+.menu-caret.open {
+  transform: rotate(90deg);
+}
+
+.menu-btn-toggle:hover .menu-caret {
+  color: #fff;
+  opacity: 1;
+  text-shadow: 0 0 6px rgba(255,255,255,0.85), 0 0 12px rgba(255,255,255,0.35);
+  background-color: rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 0 0.25rem;
+}
+
+.menu-btn-toggle:hover .menu-caret.open {
+  transform: rotate(90deg) scale(1.25);
+}
+
+.menu-btn-toggle:hover .menu-caret:not(.open) {
+  transform: rotate(0deg) scale(1.25);
+}
+
+.sidebar-nav .menu-btn:hover {
   background-color: #1e3a5f; /* Azul oscuro */
   padding-left: 2.5rem;
 }
 
+.sidebar-nav .menu-btn.active {
+  background-color: #1e3a5f;
+  box-shadow: inset 4px 0 0 #ffffff55;
+}
+
+.sidebar-nav .menu-btn.logout {
+  background: linear-gradient(90deg, #5a2530, #722f37);
+}
+
+.menu-icon {
+  margin-right: 0.6rem;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
+}
+
+.menu-btn-toggle.open {
+  background: linear-gradient(90deg, #5a2530, #1e3a5f);
+}
+
+/* Submenú desplegable por sección */
+.submenu {
+  background-color: rgba(0,0,0,0.15);
+  padding-left: 0.5rem;
+  animation: dropdown 0.25s ease;
+}
+
+.submenu li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.submenu-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2.5rem;
+  color: white;
+  background: none;
+  border: none;
+  text-align: left;
+  transition: all 0.3s;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.submenu-btn:hover {
+  background-color: #5a2530; /* tono más oscuro */
+  transform: translateX(4px);
+  box-shadow: inset 3px 0 0 rgba(255,255,255,0.2);
+}
+
+.submenu-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.submenu-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+
+.submenu-percent {
+  background: rgba(255,255,255,0.15);
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+/* Animación del dropdown */
+@keyframes dropdown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .sidebar {
     width: 100vw;
@@ -100,4 +225,93 @@
   .sidebar.open {
     left: 0;
   }
+}
+/* Fila con botón y caret juntos */
+.menu-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  padding-right: 0.75rem;
+}
+
+.menu-row .menu-btn {
+  width: auto;
+  padding: 1.25rem 2rem;
+  border-radius: 8px;
+}
+
+/* Botón de caret independiente */
+.menu-caret-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 0.9rem;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.menu-caret-btn:hover {
+  background-color: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.35);
+  transform: translateX(2px);
+}
+
+.menu-caret-btn.open {
+  background: linear-gradient(90deg, #5a2530, #1e3a5f);
+}
+
+.menu-row:hover .menu-btn {
+  background-color: #1e3a5f;
+  padding-left: 2.5rem;
+}
+
+.menu-row:hover .menu-caret-btn {
+  background-color: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.menu-caret-btn:focus-visible,
+.menu-row .menu-btn:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.55);
+  outline-offset: 2px;
+}
+.menu-btn-with-caret {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.menu-left {
+  display: inline-flex;
+  align-items: center;
+}
+
+.menu-inline-caret-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  margin-left: 0.25rem;
+}
+
+.menu-inline-caret-btn:hover {
+  background-color: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.35);
+}
+
+.menu-inline-caret-btn.open {
+  background: linear-gradient(90deg, #5a2530, #1e3a5f);
 }

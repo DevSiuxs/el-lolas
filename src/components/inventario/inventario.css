@@ -1,9 +1,11 @@
+/* Layout principal del módulo de Inventario */
 .inventario-container {
   padding: 2rem;
   background-color: #fefefe;
   min-height: 100vh;
 }
 
+/* Encabezado y breadcrumbs */
 .inventario-header {
   margin-bottom: 2rem;
 }
@@ -14,6 +16,126 @@
   font-size: 2rem;
 }
 
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.breadcrumb-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 1px solid rgba(30,58,95,0.35);
+  color: #1e3a5f;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease, border-color 0.25s ease;
+}
+
+.breadcrumb-back:hover {
+  background-color: rgba(30,58,95,0.12);
+  border-color: rgba(30,58,95,0.55);
+}
+
+.breadcrumb-back:active {
+  transform: scale(0.96);
+}
+
+.breadcrumb-back:focus-visible {
+  outline: 2px solid rgba(114,47,55,0.6);
+  outline-offset: 2px;
+}
+
+.breadcrumb-link {
+  background: none;
+  border: none;
+  color: #1e3a5f;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-sep {
+  color: #888;
+}
+
+.breadcrumb-current {
+  color: #722f37;
+  font-weight: 600;
+}
+
+/* Título y overview de sucursales */
+.inventario-title {
+  color: #722f37;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.inventario-overview {
+  margin-bottom: 2rem;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.overview-card {
+  background-color: #722f37;
+  border-radius: 12px;
+  padding: 1.25rem;
+  color: white;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.overview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.overview-indicator {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.donut-text {
+  fill: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.overview-info {
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.overview-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Estadísticas del resumen de inventario */
 .estadisticas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -54,6 +176,7 @@
   font-size: 0.9rem;
 }
 
+/* Filtros de la tabla y controles */
 .filtros {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -96,10 +219,15 @@
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  overflow: auto;
   margin-bottom: 2rem;
 }
 
+.tabla-container.sticky {
+  max-height: 60vh;
+}
+
+/* Tabla de inventario (encabezados y filas) */
 .inventario-table {
   width: 100%;
   border-collapse: collapse;
@@ -112,11 +240,46 @@
   text-align: left;
   font-weight: 600;
   font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.th-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.th-icon {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.th-icon.active {
+  opacity: 1;
+}
+
+.th-icon.hint {
+  opacity: 0.7;
 }
 
 .inventario-table td {
   padding: 1rem;
   border-bottom: 1px solid #e0e0e0;
+}
+
+.inventario-table.compact th {
+  padding: 0.6rem 0.75rem;
+}
+
+.inventario-table.compact td {
+  padding: 0.6rem 0.75rem;
+}
+
+.inventario-table.sticky thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #722f37;
 }
 
 .inventario-table tbody tr:hover {
@@ -165,9 +328,114 @@
   font-weight: 600;
 }
 
+/* Bloque de acciones superiores (precios, niveles, abastecimiento) */
 .acciones {
   display: flex;
   gap: 0.5rem;
+}
+
+.acciones-seleccion {
+  display: flex;
+  gap: 0.5rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.acciones-seleccion.activo {
+  box-shadow: 0 4px 10px rgba(114, 47, 55, 0.15);
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(30,58,95,0.0); transform: scale(1); }
+  50% { box-shadow: 0 0 0 8px rgba(30,58,95,0.12); transform: scale(1.03); }
+  100% { box-shadow: 0 0 0 0 rgba(30,58,95,0.0); transform: scale(1); }
+}
+
+.acciones-seleccion.activo .btn-precios:not(:disabled),
+.acciones-seleccion.activo .btn-ajuste:not(:disabled),
+.acciones-seleccion.activo .btn-abastecimiento:not(:disabled) {
+  animation: pulseGlow 0.8s ease-in-out 2;
+}
+
+.btn-precios.pulse,
+.btn-ajuste.pulse,
+.btn-abastecimiento.pulse {
+  animation: pulseGlow 0.8s ease-in-out 1;
+}
+
+.acciones-help {
+  margin-right: auto;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.tabla-controles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.grupo-controles {
+  background: white;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control-label {
+  font-weight: 600;
+  color: #722f37;
+}
+
+.btn-group {
+  display: inline-flex;
+  gap: 0.4rem;
+}
+
+.btn-control {
+  background: none;
+  border: 1px solid #e0e0e0;
+  color: #1e3a5f;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-control:focus-visible,
+.btn-precios:focus-visible,
+.btn-ajuste:focus-visible,
+.btn-abastecimiento:focus-visible,
+.submenu-btn:focus-visible,
+.menu-btn:focus-visible,
+.menu-inline-caret-btn:focus-visible {
+  outline: 2px solid rgba(114,47,55,0.6);
+  outline-offset: 2px;
+}
+
+.btn-control.active {
+  background-color: #1e3a5f;
+  color: white;
+  border-color: #1e3a5f;
+}
+
+.btn-control:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.paginacion .pagina-info {
+  color: #555;
 }
 
 .btn-editar,
@@ -191,12 +459,79 @@
   color: white;
 }
 
+.btn-precios {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  background-color: #1e3a5f;
+  color: white;
+}
+
 .btn-editar:hover {
   background-color: #152642;
 }
 
 .btn-ajustar:hover {
   background-color: #5a2530;
+}
+
+.btn-precios:hover {
+  background-color: #152642;
+}
+
+.sel-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+/* Leyenda de estados de inventario */
+.leyenda-stock {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: white;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  margin: 0.75rem 0 1rem;
+}
+
+.legend-dot {
+  margin-right: 0.35rem;
+}
+
+/* Banner de confirmación */
+.banner {
+  margin: 0.5rem 0;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.banner-success { background-color: #e8f5e8; color: #2f7d32; }
+.banner-error { background-color: #ffebee; color: #c62828; }
+
+/* Botón de creación de orden */
+.btn-abastecimiento {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-abastecimiento:hover {
+  background-color: #3a8f3f;
 }
 
 .informacion-importante {
@@ -241,6 +576,110 @@
 .naranja { color: #FF9800; }
 .rojo { color: #F44336; }
 
+/* Órdenes de abastecimiento */
+.orden-indicador {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.ordenes-container {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-top: 1rem;
+}
+
+.ordenes-container h3 {
+  color: #1e3a5f;
+  margin-bottom: 0.75rem;
+}
+
+.estado-orden-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: white;
+}
+
+.estado-orden-badge.pendiente { background-color: #FF9800; }
+.estado-orden-badge.aprobada { background-color: #4CAF50; }
+.estado-orden-badge.cancelada { background-color: #F44336; }
+
+/* Modales (precios, niveles, abastecimiento, proveedor) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: min(680px, 92vw);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.form-grid input {
+  padding: 0.65rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.btn-cancelar, .btn-guardar, .btn-ajuste {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btn-cancelar { background-color: #e0e0e0; }
+.btn-guardar { background-color: #1e3a5f; color: #fff; }
+.btn-ajuste { background-color: #722f37; color: #fff; }
+
+.ajuste-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.cantidad-actual.grande {
+  font-size: 2rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .inventario-container {
@@ -266,5 +705,13 @@
 
   .acciones {
     flex-direction: column;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }

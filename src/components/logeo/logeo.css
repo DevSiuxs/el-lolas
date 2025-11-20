@@ -1,3 +1,4 @@
+/* Layout principal del Login */
 .logeo-container {
   min-height: 100vh;
   background-color: #fefefe;
@@ -7,6 +8,7 @@
   padding: 2rem;
 }
 
+/* Tarjeta del formulario de acceso */
 .logeo-card {
   background: white;
   border-radius: 12px;
@@ -17,6 +19,7 @@
   border: 1px solid #e0e0e0;
 }
 
+/* Encabezado de la tarjeta */
 .logeo-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -33,17 +36,20 @@
   font-size: 0.9rem;
 }
 
+/* Contenedor del formulario */
 .logeo-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
+/* Grupo de campo (label + input) */
 .form-group {
   display: flex;
   flex-direction: column;
 }
 
+/* Etiquetas de campos */
 .form-group label {
   color: #722f37; /* Color vino */
   margin-bottom: 0.5rem;
@@ -51,6 +57,7 @@
   font-size: 0.9rem;
 }
 
+/* Campos de entrada y selector de rol */
 .form-group input,
 .rol-select {
   padding: 0.75rem 1rem;
@@ -61,6 +68,7 @@
   background-color: white;
 }
 
+/* Estado de foco en campos */
 .form-group input:focus,
 .rol-select:focus {
   outline: none;
@@ -68,16 +76,19 @@
   box-shadow: 0 0 0 3px rgba(114, 47, 55, 0.1);
 }
 
+/* Estado de error del input */
 .form-group input.error {
   border-color: #f44336;
 }
 
+/* Mensaje de error */
 .error-message {
   color: #f44336;
   font-size: 0.8rem;
   margin-top: 0.25rem;
 }
 
+/* Estilos del selector de rol */
 .rol-select {
   cursor: pointer;
   appearance: none;
@@ -87,6 +98,7 @@
   background-size: 12px;
 }
 
+/* Botón de envío (login) */
 .submit-btn {
   background-color: #722f37; /* Color vino */
   color: white;
@@ -106,6 +118,7 @@
   box-shadow: 0 4px 12px rgba(30, 58, 95, 0.3);
 }
 
+/* Pie de tarjeta: enlaces y ayuda */
 .logeo-footer {
   text-align: center;
   margin-top: 2rem;
